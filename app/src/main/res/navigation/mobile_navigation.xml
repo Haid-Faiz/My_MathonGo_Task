@@ -10,8 +10,7 @@
         android:label="QuestionListFragment" >
         <action
             android:id="@+id/action_questionListFragment_to_quizFragment"
-            app:destination="@id/quizFragment"
-            app:enterAnim="slide" />
+            app:destination="@id/quizFragment" />
     </fragment>
     <fragment
         android:id="@+id/quizFragment"
