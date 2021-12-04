@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -56,6 +57,8 @@ dependencies {
     //
     implementation 'in.hourglass.mathrender:katexmathview:1.0.3'
 
+    // Integrating datasource library
+    implementation project(path: ':datasource')
     // Dagger-Hilt for Dependency Injection
 //    implementation "com.google.dagger:hilt-android:$hilt_version"
 //    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
