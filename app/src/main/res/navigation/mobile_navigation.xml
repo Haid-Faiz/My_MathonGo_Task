@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mobile_navigation.xml"
+    app:startDestination="@id/questionListFragment">
+
+    <fragment
+        android:id="@+id/questionListFragment"
+        android:name="com.example.my_mathongo_task.ui.questions_list.QuestionListFragment"
+        android:label="QuestionListFragment" >
+        <action
+            android:id="@+id/action_questionListFragment_to_quizFragment"
+            app:destination="@id/quizFragment"
+            app:enterAnim="slide" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.example.my_mathongo_task.ui.quiz.QuizFragment"
+        android:label="QuizFragment" >
+        <action
+            android:id="@+id/action_quizFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.my_mathongo_task.ui.result.ResultFragment"
+        android:label="ResultFragment" />
+</navigation>
