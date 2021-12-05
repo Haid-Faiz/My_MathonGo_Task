@@ -1,0 +1,22 @@
+name: Build
+
+on: push
+
+jobs:
+  build_job:
+    name: Assemble Gradle
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the latest commit
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Setup Java JDK
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      # Assemble Gradle Build
+      - name: Assemble Gradle Build
+        run: ./gradlew assembleDebug

@@ -1,12 +1,10 @@
 package com.example.my_mathongo_task.ui.questions_list
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -32,7 +30,6 @@ class QuestionListFragment : Fragment() {
     private var currentUnAttemptedList: ArrayList<QuestionItem>? = null
     private var attemptedQuestionList: ArrayList<QuestionItem>? = null
     private var questionsListType: String? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -112,7 +109,6 @@ class QuestionListFragment : Fragment() {
                 }
             }
         }
-
     }
 
     override fun onResume() {
@@ -124,6 +120,21 @@ class QuestionListFragment : Fragment() {
         val questionsType = resources.getStringArray(R.array.questions_type)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, questionsType)
         binding.autoCompleteText.setAdapter(arrayAdapter)
+    }
+
+    private fun setUpClickListeners() = binding.apply {
+
+        unattemptedView.errorLayout.retryButton.setOnClickListener {
+            viewModel.getAllQuestions()
+        }
+
+        attemptedView.emptyLayout.clearFilter.setOnClickListener {
+            binding.autoCompleteText.setText(NOT_ATTEMPTED, false)
+            viewModel.saveQuestionListType(NOT_ATTEMPTED)
+            viewModel.getAllQuestions()
+            binding.unattemptedView.root.isGone = false
+            binding.attemptedView.root.isGone = true
+        }
 
         binding.autoCompleteText.setOnItemClickListener { adapterView, view, position: Int, id: Long ->
             when (position) {
@@ -143,27 +154,11 @@ class QuestionListFragment : Fragment() {
         }
     }
 
-    private fun setUpClickListeners() = binding.apply {
-
-        unattemptedView.errorLayout.retryButton.setOnClickListener {
-            viewModel.getAllQuestions()
-        }
-
-        attemptedView.emptyLayout.clearFilter.setOnClickListener {
-            binding.autoCompleteText.setText(NOT_ATTEMPTED, false)
-            viewModel.saveQuestionListType(NOT_ATTEMPTED)
-            viewModel.getAllQuestions()
-            binding.unattemptedView.root.isGone = false
-            binding.attemptedView.root.isGone = true
-        }
-    }
-
     private fun setUpRecyclerView() = binding.apply {
         // Setting up Un attempted questions RecyclerView
         unattemptedView.rvUnAttemptedList.setHasFixedSize(true)
         unAttemptedAdapter = QuestionsListAdapter { currentPosition ->
             currentUnAttemptedList?.let { currentList ->
-                Log.d("CurrentPosition_Quest", "$currentPosition")
                 viewModel.setQuestionList(currentList)
                 viewModel.setCurrentQuestionNum(currentPosition)
                 findNavController().navigate(R.id.action_questionListFragment_to_quizFragment)

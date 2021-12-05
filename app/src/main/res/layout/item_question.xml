@@ -28,7 +28,7 @@
         <katex.hourglass.in.mathlib.MathView
             android:id="@+id/question_view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_28sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_6sdp"
             app:setClickable="true"

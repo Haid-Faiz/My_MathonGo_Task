@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">MathonGo_Marks</string>
-    <string name="filter_not_attempted"><u>Not attempted</u></string>
-    <string name="filter_attempted"><u>Attempted</u></string>
 
     <string-array name="questions_type">
         <item>Not attempted</item>

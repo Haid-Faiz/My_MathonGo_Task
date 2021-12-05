@@ -92,7 +92,7 @@
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/_16sdp"
             android:paddingTop="@dimen/_2sdp"
-            android:paddingBottom="@dimen/_16sdp">
+            android:paddingBottom="@dimen/_24sdp">
 
             <katex.hourglass.in.mathlib.MathView
                 android:id="@+id/question_text"
@@ -385,6 +385,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans"
                     android:text="Solution:"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:textColor="@color/dark_grey" />
 
                 <katex.hourglass.in.mathlib.MathView

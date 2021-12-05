@@ -1,6 +1,9 @@
 package com.example.my_mathongo_task.ui
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.datasource.remote.models.QuestionItem
 import com.example.my_mathongo_task.data.QuestionsRepo
 import com.example.my_mathongo_task.utils.Resource
@@ -55,5 +58,4 @@ class QuestionsViewModel @Inject constructor(
     fun getCurrentQuestionNum(): Int {
         return currentQuestionNum
     }
-
 }

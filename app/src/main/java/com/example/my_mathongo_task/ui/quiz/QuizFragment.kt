@@ -24,7 +24,6 @@ import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint
 import katex.hourglass.`in`.mathlib.MathView
 
-
 @AndroidEntryPoint
 class QuizFragment : Fragment(), View.OnClickListener {
 
@@ -39,7 +38,6 @@ class QuizFragment : Fragment(), View.OnClickListener {
     private var hatrickQuestionCount: Int = 0
     private lateinit var popingAnim: Animation
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -53,9 +51,8 @@ class QuizFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         unAttemptedList = viewModel.getQuestionList() as ArrayList
         currentQuestPosition = viewModel.getCurrentQuestionNum()
-        updateUI(unAttemptedList[currentQuestPosition])
         popingAnim = AnimationUtils.loadAnimation(requireContext(), R.anim.poping_anim)
-
+        updateUI(unAttemptedList[currentQuestPosition])
         setUpClickListeners()
     }
 
@@ -103,7 +100,7 @@ class QuizFragment : Fragment(), View.OnClickListener {
             textView.background =
                 ContextCompat.getDrawable(requireContext(), R.drawable.unselected_option_round_bg)
         } else {
-            // Check it & unCheck others
+            // Check it & reset/uncheck others
             resetOptions()
             cardView.strokeColor = ContextCompat.getColor(requireContext(), R.color.blue)
             textView.background =
@@ -115,28 +112,28 @@ class QuizFragment : Fragment(), View.OnClickListener {
 
     private fun resetOptions() = binding.apply {
         // Reseting option A
-        optionA.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
+        optionA.background = null
         optionA.strokeColor = ContextCompat.getColor(requireContext(), R.color.dark_grey)
         optionA.isChecked = false
         aText.background =
             ContextCompat.getDrawable(requireContext(), R.drawable.unselected_option_round_bg)
         aText.setTextColor(ContextCompat.getColor(requireContext(), R.color.black_dark))
         // Reseting option B
-        optionB.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
+        optionB.background = null
         optionB.strokeColor = ContextCompat.getColor(requireContext(), R.color.dark_grey)
         optionB.isChecked = false
         bText.background =
             ContextCompat.getDrawable(requireContext(), R.drawable.unselected_option_round_bg)
         bText.setTextColor(ContextCompat.getColor(requireContext(), R.color.black_dark))
         // Reseting option C
-        optionC.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
+        optionC.background = null
         optionC.strokeColor = ContextCompat.getColor(requireContext(), R.color.dark_grey)
         optionC.isChecked = false
         cText.background =
             ContextCompat.getDrawable(requireContext(), R.drawable.unselected_option_round_bg)
         cText.setTextColor(ContextCompat.getColor(requireContext(), R.color.black_dark))
         // Reseting option D
-        optionD.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
+        optionD.background = null
         optionD.strokeColor = ContextCompat.getColor(requireContext(), R.color.dark_grey)
         optionD.isChecked = false
         dText.background =
@@ -153,9 +150,7 @@ class QuizFragment : Fragment(), View.OnClickListener {
             // load the image also
             questionImage.isGone = false
             questionImage.load(questionItem.question.image)
-        } else {
-            questionImage.isGone = true
-        }
+        } else questionImage.isGone = true
         examName.text = questionItem.exams[0]
 
         // Load option A
@@ -229,6 +224,11 @@ class QuizFragment : Fragment(), View.OnClickListener {
 
     private fun setUpClickListeners() = binding.apply {
 
+        optionA.setOnClickListener(this@QuizFragment)
+        optionB.setOnClickListener(this@QuizFragment)
+        optionC.setOnClickListener(this@QuizFragment)
+        optionD.setOnClickListener(this@QuizFragment)
+
         backBtn.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -242,147 +242,26 @@ class QuizFragment : Fragment(), View.OnClickListener {
             hatrickQuestionCount = 0
             streakView.root.isGone = true
             midNextBtn.isGone = true
-            checkAnsBtn.isGone = false
-            checkAnsBtn.isEnabled = false
             currentQuestPosition = ++currentQuestPosition
-            updateUI(unAttemptedList[currentQuestPosition])
-            resetOptions()
-            selectedCardId = null
-            selectedRoundTextId = null
-            selectedOption = null
-            solutionLl.isGone = true
-            // Make options clickable
-            optionA.isClickable = true
-            optionB.isClickable = true
-            optionC.isClickable = true
-            optionD.isClickable = true
-            optionA.isEnabled = true
-            optionB.isEnabled = true
-            optionC.isEnabled = true
-            optionD.isEnabled = true
-
-            aText.isClickable = true
-            bText.isClickable = true
-            cText.isClickable = true
-            dText.isClickable = true
-            // Disable options click
-            optionAMathView.isClickable = true
-            optionBMathView.isClickable = true
-            optionCMathView.isClickable = true
-            optionDMathView.isClickable = true
-            // Remove answer status poster
-            correctPosterText.isGone = true
-            wrongPosterText.isGone = true
+            setUpNextQuest()
         }
-
-        optionA.setOnClickListener(this@QuizFragment)
-        optionB.setOnClickListener(this@QuizFragment)
-        optionC.setOnClickListener(this@QuizFragment)
-        optionD.setOnClickListener(this@QuizFragment)
 
         nextQuestionBtn.setOnClickListener {
             midNextBtn.isGone = true
-            checkAnsBtn.isGone = false
-            checkAnsBtn.isEnabled = false
             currentQuestPosition = ++currentQuestPosition
-            updateUI(unAttemptedList[currentQuestPosition])
-            resetOptions()
-            selectedCardId = null
-            selectedRoundTextId = null
-            selectedOption = null
-            solutionLl.isGone = true
-            // Make options clickable
-            optionA.isClickable = true
-            optionB.isClickable = true
-            optionC.isClickable = true
-            optionD.isClickable = true
-            optionA.isEnabled = true
-            optionB.isEnabled = true
-            optionC.isEnabled = true
-            optionD.isEnabled = true
-
-            aText.isClickable = true
-            bText.isClickable = true
-            cText.isClickable = true
-            dText.isClickable = true
-            // Disable options click
-            optionAMathView.isClickable = true
-            optionBMathView.isClickable = true
-            optionCMathView.isClickable = true
-            optionDMathView.isClickable = true
-            // Remove answer status poster
-            correctPosterText.isGone = true
-            wrongPosterText.isGone = true
+            setUpNextQuest()
         }
 
         previousQuestionBtn.setOnClickListener {
             midNextBtn.isGone = true
-            checkAnsBtn.isGone = false
-            checkAnsBtn.isEnabled = false
             currentQuestPosition = --currentQuestPosition
-            updateUI(unAttemptedList[currentQuestPosition])
-            resetOptions()
-            selectedCardId = null
-            selectedRoundTextId = null
-            selectedOption = null
-            solutionLl.isGone = true
-            // Make options clickable
-            optionA.isClickable = true
-            optionB.isClickable = true
-            optionC.isClickable = true
-            optionD.isClickable = true
-            optionA.isEnabled = true
-            optionB.isEnabled = true
-            optionC.isEnabled = true
-            optionD.isEnabled = true
-
-            aText.isClickable = true
-            bText.isClickable = true
-            cText.isClickable = true
-            dText.isClickable = true
-            // Disable options click
-            optionAMathView.isClickable = true
-            optionBMathView.isClickable = true
-            optionCMathView.isClickable = true
-            optionDMathView.isClickable = true
-            // Remove answer status poster
-            correctPosterText.isGone = true
-            wrongPosterText.isGone = true
+            setUpNextQuest()
         }
 
         midNextBtn.setOnClickListener {
             midNextBtn.isGone = true
-            checkAnsBtn.isGone = false
-            checkAnsBtn.isEnabled = false
             currentQuestPosition = ++currentQuestPosition
-            updateUI(unAttemptedList[currentQuestPosition])
-            resetOptions()
-            selectedCardId = null
-            selectedRoundTextId = null
-            selectedOption = null
-            solutionLl.isGone = true
-            // Make options clickable
-            optionA.isClickable = true
-            optionB.isClickable = true
-            optionC.isClickable = true
-            optionD.isClickable = true
-            optionA.isEnabled = true
-            optionB.isEnabled = true
-            optionC.isEnabled = true
-            optionD.isEnabled = true
-
-            aText.isClickable = true
-            bText.isClickable = true
-            cText.isClickable = true
-            dText.isClickable = true
-            // Disable options click
-            optionAMathView.isClickable = true
-            optionBMathView.isClickable = true
-            optionCMathView.isClickable = true
-            optionDMathView.isClickable = true
-            // Remove answer status poster
-            correctPosterText.isGone = true
-            wrongPosterText.isGone = true
+            setUpNextQuest()
         }
 
         checkAnsBtn.setOnClickListener {
@@ -392,6 +271,8 @@ class QuizFragment : Fragment(), View.OnClickListener {
                 loadSolution(unAttemptedList[currentQuestPosition].solution)
 
                 val card = root.findViewById<MaterialCardView>(selectedCardId!!)
+                card.isChecked = false
+                card.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
                 val textView = root.findViewById<TextView>(selectedRoundTextId!!)
 
                 if (selectedOption!!.isCorrect) {
@@ -415,7 +296,6 @@ class QuizFragment : Fragment(), View.OnClickListener {
                         correctPosterText.startAnimation(popingAnim)
                         correctPosterText.postDelayed({ correctPosterText.isGone = true }, 3000)
                     }
-
                 } else {
                     hatrickQuestionCount = 0
                     // Change the selected option color to red
@@ -437,7 +317,7 @@ class QuizFragment : Fragment(), View.OnClickListener {
                     // get the index of correct option
                     val correctOptionIndex =
                         unAttemptedList[currentQuestPosition].options.indexOf(filteredOptions[0])
-
+                    // find correct option
                     val (correctCard, correctText) = when (correctOptionIndex) {
                         0 -> Pair(
                             root.findViewById<MaterialCardView>(R.id.option_a),
@@ -480,7 +360,7 @@ class QuizFragment : Fragment(), View.OnClickListener {
                     wrongPosterText.postDelayed({ wrongPosterText.isGone = true }, 3000)
                 }
 
-                // insert this question in database
+                // now insert this question in database also
                 viewModel.insertQuestion(unAttemptedList[currentQuestPosition])
                 // Show Mid Next Button
                 checkAnsBtn.isGone = true
@@ -489,31 +369,47 @@ class QuizFragment : Fragment(), View.OnClickListener {
             }
 
             // Disable options click
-            optionA.isClickable = false
-            optionB.isClickable = false
-            optionC.isClickable = false
-            optionD.isClickable = false
-            optionA.isEnabled = false
-            optionB.isEnabled = false
-            optionC.isEnabled = false
-            optionD.isEnabled = false
-            // Disable options click
-            aText.isClickable = false
-            bText.isClickable = false
-            cText.isClickable = false
-            dText.isClickable = false
-            // Disable options click
-            optionAMathView.isClickable = false
-            optionBMathView.isClickable = false
-            optionCMathView.isClickable = false
-            optionDMathView.isClickable = false
+            enableOptions(false)
         }
     }
 
-    private fun verifyAnswer() = binding.apply {
-
+    private fun enableOptions(isEnable: Boolean) = binding.apply {
+        // Card clicks
+        optionA.isClickable = isEnable
+        optionB.isClickable = isEnable
+        optionC.isClickable = isEnable
+        optionD.isClickable = isEnable
+        optionA.isEnabled = isEnable
+        optionB.isEnabled = isEnable
+        optionC.isEnabled = isEnable
+        optionD.isEnabled = isEnable
+        // Texts click
+        aText.isClickable = isEnable
+        bText.isClickable = isEnable
+        cText.isClickable = isEnable
+        dText.isClickable = isEnable
+        // Math view clicks
+        optionAMathView.isClickable = isEnable
+        optionBMathView.isClickable = isEnable
+        optionCMathView.isClickable = isEnable
+        optionDMathView.isClickable = isEnable
     }
 
+    private fun setUpNextQuest() = binding.apply {
+        checkAnsBtn.isGone = false
+        checkAnsBtn.isEnabled = false
+        updateUI(unAttemptedList[currentQuestPosition])
+        resetOptions()
+        selectedCardId = null
+        selectedRoundTextId = null
+        selectedOption = null
+        solutionLl.isGone = true
+        // Make options clickable
+        enableOptions(true)
+        // Remove answer status poster
+        correctPosterText.isGone = true
+        wrongPosterText.isGone = true
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

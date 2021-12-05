@@ -23,5 +23,4 @@ class ApiClient {
             .client(okHttpBuilder.build())
             .build()
     }
-
 }

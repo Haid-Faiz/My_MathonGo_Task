@@ -1,7 +1,7 @@
 package com.example.my_mathongo_task.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.my_mathongo_task.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

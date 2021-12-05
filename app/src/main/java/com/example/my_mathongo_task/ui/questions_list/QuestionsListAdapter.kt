@@ -12,7 +12,6 @@ class QuestionsListAdapter(
     private var onItemClicked: ((currentQuestPosition: Int) -> Unit)
 ) : ListAdapter<QuestionItem, QuestionsListAdapter.ViewHolder>(DiffUtilCallback()) {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             ItemQuestionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -21,14 +20,6 @@ class QuestionsListAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position), position)
-    }
-
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        return position
     }
 
     inner class ViewHolder(
