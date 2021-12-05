@@ -7,11 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.datasource.remote.models.QuestionItem
 import com.example.my_mathongo_task.data.QuestionsRepo
 import com.example.my_mathongo_task.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class QuestionsViewModel constructor() : ViewModel() {
+@HiltViewModel
+class QuestionsViewModel @Inject constructor(
+    private val questionsRepo: QuestionsRepo,
+) : ViewModel() {
 
-    private val questionsRepo = QuestionsRepo()
     private lateinit var questionList: List<QuestionItem>
     private var currentQuestionNum: Int = 0
 
@@ -32,7 +36,13 @@ class QuestionsViewModel constructor() : ViewModel() {
         _questions.postValue(questionsRepo.getQuestionList())
     }
 
+    fun saveQuestionListType(questionListType: String) = viewModelScope.launch {
+        questionsRepo.saveQuestionListType(questionListType)
+    }
 
+    fun getQuestionListType() = questionsRepo.getQuestionListType()
+
+    // Getters and Setters for shared viewModel data transfer
     fun setQuestionList(questionList: List<QuestionItem>) {
         this.questionList = questionList
     }
@@ -48,6 +58,5 @@ class QuestionsViewModel constructor() : ViewModel() {
     fun getCurrentQuestionNum(): Int {
         return currentQuestionNum
     }
-
 
 }

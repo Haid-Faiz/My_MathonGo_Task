@@ -20,8 +20,10 @@ import com.example.my_mathongo_task.R
 import com.example.my_mathongo_task.databinding.FragmentQuizBinding
 import com.example.my_mathongo_task.ui.QuestionsViewModel
 import com.google.android.material.card.MaterialCardView
+import dagger.hilt.android.AndroidEntryPoint
 import katex.hourglass.`in`.mathlib.MathView
 
+@AndroidEntryPoint
 class QuizFragment : Fragment(), View.OnClickListener {
 
     private var _binding: FragmentQuizBinding? = null

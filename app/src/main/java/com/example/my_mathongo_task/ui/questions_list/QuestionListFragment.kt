@@ -15,7 +15,9 @@ import com.example.my_mathongo_task.databinding.FragmentQuestionsListBinding
 import com.example.my_mathongo_task.ui.QuestionsViewModel
 import com.example.my_mathongo_task.utils.Resource
 import com.example.my_mathongo_task.utils.showSnackBar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class QuestionListFragment : Fragment() {
 
     private var _binding: FragmentQuestionsListBinding? = null

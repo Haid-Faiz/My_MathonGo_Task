@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -54,25 +55,24 @@ dependencies {
     // Coil for image loading
     implementation "io.coil-kt:coil:$coil_version"
 
-    //
+    // MathView library to render Latex format
     implementation 'in.hourglass.mathrender:katexmathview:1.0.3'
 
-    // Integrating datasource library
+    // Integrating datasource library (Module dependency)
     implementation project(path: ':datasource')
-    // Dagger-Hilt for Dependency Injection
-//    implementation "com.google.dagger:hilt-android:$hilt_version"
-//    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
-    // Module dependency (libnews library)
-//    implementation project(path: ':datasource')
+    //  Dagger-Hilt for Dependency Injection
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     // Kotlin Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
 
-//    // Chrome Custom Tab
-//    implementation "androidx.browser:browser:$chrome_custom_tab_version"
+    // JetPack DataStore
+    implementation "androidx.datastore:datastore-preferences:$datastore_version"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
 
-//     Facebook shimmer effect
+    // Facebook shimmer effect
     implementation "com.facebook.shimmer:shimmer:$facebook_shimmer"
 
 
