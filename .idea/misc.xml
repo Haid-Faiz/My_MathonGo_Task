@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable/correct_option_round_bg.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/exam_name_bg.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/grey_shimmer_bg.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/drawable/ic_antenna.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/ic_brand_mark.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/ic_empty_result.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/ic_marks_logo.xml" value="0.21197916666666666" />
@@ -15,11 +16,17 @@
         <entry key="app/src/main/res/drawable/unselected_option_round_bg.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/wrong_option_round_bg.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_questions_list.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_quiz.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/attempted_questions_layout.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/empty_status.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/error_status.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_questions_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_quiz.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_result.xml" value="0.1721014492753623" />
         <entry key="app/src/main/res/layout/item_question.xml" value="0.33" />
         <entry key="app/src/main/res/layout/shimmer_progress.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/streak_layout.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/unattempted_questions_layout.xml" value="0.19583333333333333" />
       </map>
     </option>
   </component>

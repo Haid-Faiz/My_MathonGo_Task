@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/empty_attempted_question_status"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_56sdp"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:visibility="gone"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="@dimen/_136sdp"
+        android:layout_height="@dimen/_136sdp"
+        android:src="@drawable/ic_empty_result" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:text="Oh! you haven't attempted any question yet"
+        android:textColor="@color/dark_grey"
+        android:textSize="@dimen/_14ssp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/clear_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:text="Clear filter"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        app:strokeColor="@color/blue" />
+
+</LinearLayout>

@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import com.example.my_mathongo_task.utils.Constants.APP_DATASTORE
 import com.example.my_mathongo_task.utils.Constants.QUESTION_LIST_TYPE_KEY
 import kotlinx.coroutines.flow.Flow
@@ -21,7 +23,7 @@ class AppPrefs(context: Context) {
         it[questionListTypeKey] = questionListType
     }
 
-    fun getQuestionsListType(): Flow<String?> = _datastore.data.map {
+    fun getQuestionsListType(): LiveData<String?> = _datastore.data.map {
         it[questionListTypeKey]
-    }
+    }.asLiveData()
 }

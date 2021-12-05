@@ -7,6 +7,12 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/streak_view"
+        layout="@layout/streak_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <TextView
         android:id="@+id/correct_poster_text"
         android:layout_width="match_parent"
@@ -67,6 +73,7 @@
         tools:text="Q4 (Single Correct)" />
 
     <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_rl"

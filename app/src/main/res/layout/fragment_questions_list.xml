@@ -54,125 +54,51 @@
         android:layout_marginEnd="@dimen/_8sdp"
         android:orientation="horizontal">
 
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/question_type_drop_down"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Showing"
-            android:textColor="@color/dark_grey" />
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:paddingStart="-12dp"
+            android:paddingEnd="-12dp"
+            app:boxStrokeColor="@color/blue"
+            app:endIconTint="@color/blue">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/filter_btn"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_4sdp"
-            android:text="@string/filter_not_attempted"
-            android:textAllCaps="false"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/_10ssp" />
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/autoCompleteText"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_22sdp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
+                android:paddingVertical="1dp"
+                android:text="Not Attempted"
+                android:textSize="@dimen/_9ssp">
+
+            </com.google.android.material.textfield.MaterialAutoCompleteTextView>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer_progress"
+    <include
+        android:id="@+id/unattempted_view"
+        layout="@layout/unattempted_questions_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="@dimen/_4sdp"
-        app:shimmer_auto_start="true"
-        tools:visibility="gone">
+        android:layout_height="match_parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include
-                layout="@layout/shimmer_progress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/shimmer_progress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/shimmer_progress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/shimmer_progress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/shimmer_progress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/shimmer_progress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/shimmer_progress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/shimmer_progress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/shimmer_progress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/shimmer_progress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_questions_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingHorizontal="@dimen/_6sdp"
-        android:paddingTop="@dimen/_2sdp"
+    <include
+        android:id="@+id/attempted_view"
         android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_question"
-        tools:visibility="visible" />
-
-    <LinearLayout
-        android:id="@+id/empty_attempted_question_status"
+        layout="@layout/attempted_questions_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_56sdp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <ImageView
-            android:layout_width="@dimen/_136sdp"
-            android:layout_height="@dimen/_136sdp"
-            android:src="@drawable/ic_empty_result" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_24sdp"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:text="Oh! you haven't attempted any question yet"
-            android:textColor="@color/dark_grey"
-            android:textSize="@dimen/_14ssp" />
-
-    </LinearLayout>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

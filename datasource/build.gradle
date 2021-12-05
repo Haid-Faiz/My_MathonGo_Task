@@ -38,21 +38,20 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.0'
 
     // Room components
-    implementation "androidx.room:room-runtime:$room_version"
+    api "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     // Kotlin extensions & coroutines support for Room
-    implementation "androidx.room:room-ktx:$room_version"
-
-//    // Jetpack paging 3
-//    api "androidx.paging:paging-runtime-ktx:$paging_version"
+    api "androidx.room:room-ktx:$room_version"
 
     // Retrofit 2
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
 
-    // Moshi converter factory
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
     // OkHttp
     implementation "com.squareup.okhttp3:okhttp:$okk_http_version"
+
+    // Moshi converter factory
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+
     // Moshi
     api "com.squareup.moshi:moshi:$moshi_version"
     // Moshi Codegen

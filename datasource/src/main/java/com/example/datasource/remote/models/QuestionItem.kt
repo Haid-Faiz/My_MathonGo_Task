@@ -1,14 +1,18 @@
 package com.example.datasource.remote.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
+@Entity(tableName = "questions_table")
 @JsonClass(generateAdapter = true)
 data class QuestionItem(
-    @Json(name = "exams")
-    var exams: List<String>,
+    @PrimaryKey
     @Json(name = "id")
     var id: String,
+    @Json(name = "exams")
+    var exams: List<String>,
     @Json(name = "options")
     var options: List<Option>,
     @Json(name = "previousYearPapers")

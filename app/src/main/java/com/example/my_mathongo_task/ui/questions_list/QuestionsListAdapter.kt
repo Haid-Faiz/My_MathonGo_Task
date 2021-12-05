@@ -23,6 +23,8 @@ class QuestionsListAdapter(
         holder.bind(getItem(position), position)
     }
 
+
+
     inner class ViewHolder(
         private val binding: ItemQuestionBinding
     ) : RecyclerView.ViewHolder(binding.root) {

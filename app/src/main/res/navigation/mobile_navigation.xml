@@ -12,9 +12,9 @@
             android:id="@+id/action_questionListFragment_to_quizFragment"
             app:destination="@id/quizFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/quizFragment"

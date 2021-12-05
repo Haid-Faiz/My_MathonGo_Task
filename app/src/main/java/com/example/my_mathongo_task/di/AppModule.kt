@@ -1,6 +1,8 @@
 package com.example.my_mathongo_task.di
 
 import android.content.Context
+import com.example.datasource.local.QuestionsDao
+import com.example.datasource.local.QuestionsDatabase
 import com.example.datasource.remote.ApiClient
 import com.example.datasource.remote.apis.MathonGoApi
 import com.example.my_mathongo_task.utils.AppPrefs
@@ -23,6 +25,11 @@ object AppModule {
     @Singleton
     fun providesMathonGoApi(apiClient: ApiClient): MathonGoApi =
         apiClient.retrofit.create(MathonGoApi::class.java)
+
+    @Provides
+    @Singleton
+    fun providesQuestionDao(@ApplicationContext context: Context): QuestionsDao =
+        QuestionsDatabase.invoke(context).getQuestionsDao()
 
     @Provides
     @Singleton

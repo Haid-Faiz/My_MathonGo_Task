@@ -13,8 +13,8 @@
     <color name="primary_background">#FFFFFF</color>
     <color name="light_grey">#EBECEF</color>
     <color name="dark_grey">#989AA6</color>
-    <color name="green">#31D99C</color>
-    <color name="green_transparent">#AD31D99C</color>
+    <color name="green">#2DCC92</color>
+    <color name="green_transparent">#B52DCC92</color>
     <color name="black_dark">#151529</color>
     <color name="red">#FF5858</color>
     <color name="red_transparent">#A8FF5858</color>
