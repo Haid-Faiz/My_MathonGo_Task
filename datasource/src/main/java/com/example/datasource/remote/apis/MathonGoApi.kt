@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface MathonGoApi {
 
-    @GET("JEE_Main_-_Gravitation.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211204%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211204T045759Z&X-Amz-Expires=86400&X-Amz-Signature=e26560d90f9193316d28200ac17274562df999bab3df5918195f31281a3b8686&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22JEE%2520Main%2520-%2520Gravitation.json%22&x-id=GetObject")
+    @GET("JEE_Main_-_Gravitation.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211205%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211205T052322Z&X-Amz-Expires=86400&X-Amz-Signature=89a172313007503854d239bbb425b9e792921471c04ae543b3d80018f48c2fec&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22JEE%2520Main%2520-%2520Gravitation.json%22&x-id=GetObject")
     suspend fun fetchQuestionsList(): Response<List<QuestionItem>>
 }

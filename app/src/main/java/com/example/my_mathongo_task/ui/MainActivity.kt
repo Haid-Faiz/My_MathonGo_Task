@@ -1,4 +1,4 @@
-package com.example.my_mathongo_task
+package com.example.my_mathongo_task.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

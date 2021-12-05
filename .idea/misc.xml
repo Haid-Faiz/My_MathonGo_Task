@@ -3,12 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/correct_option_round_bg.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/drawable/exam_name_bg.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/grey_shimmer_bg.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/ic_brand_mark.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/ic_empty_result.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/ic_marks_logo.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/drawable/question_preview.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/drawable/selected_option_round_bg.xml" value="1.4535714285714285" />
+        <entry key="app/src/main/res/drawable/splash_bg.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/drawable/unselected_option_round_bg.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/drawable/wrong_option_round_bg.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_questions_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_questions_list.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_quiz.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_result.xml" value="0.1721014492753623" />
         <entry key="app/src/main/res/layout/item_question.xml" value="0.33" />

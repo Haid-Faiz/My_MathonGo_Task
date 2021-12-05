@@ -1,7 +1,452 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/correct_poster_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/question_num"
+        android:layout_alignParentTop="true"
+        android:background="@color/green_transparent"
+        android:gravity="center"
+        android:text="You got it right !"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_18ssp"
+        android:translationZ="@dimen/_100sdp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/wrong_poster_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/question_num"
+        android:layout_alignParentTop="true"
+        android:background="@color/red_transparent"
+        android:gravity="center"
+        android:text="You got it right !"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_18ssp"
+        android:translationZ="@dimen/_100sdp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/back_btn"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_marginBottom="@dimen/_16sdp"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/back_btn"
+        android:layout_alignBottom="@id/back_btn"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_toEndOf="@+id/back_btn"
+        android:gravity="center_vertical"
+        android:text="Gravitation"
+        android:textColor="@color/black_dark"
+        android:textSize="@dimen/_14ssp" />
+
+    <TextView
+        android:id="@+id/question_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/back_btn"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:textColor="@color/dark_grey"
+        tools:text="Q4 (Single Correct)" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_rl"
+        android:layout_below="@id/question_num"
+        android:paddingTop="@dimen/_2sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingTop="@dimen/_2sdp"
+            android:paddingBottom="@dimen/_16sdp">
+
+            <katex.hourglass.in.mathlib.MathView
+                android:id="@+id/question_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:setText="Loading question..."
+                app:setTextColor="@color/black"
+                app:setTextSize="@dimen/_8ssp" />
+
+            <ImageView
+                android:id="@+id/question_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:src="@drawable/ic_marks_logo"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/exam_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:background="@drawable/exam_name_bg"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_2sdp"
+                android:textAlignment="center"
+                android:textColor="@color/blue"
+                tools:text="Jee Mains 2020" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/option_a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:checkable="true"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:checkedIcon="@null"
+                app:checkedIconSize="0dp"
+                app:strokeColor="@color/dark_grey"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_12sdp">
+
+                    <TextView
+                        android:id="@+id/a_text"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/unselected_option_round_bg"
+                        android:gravity="center"
+                        android:text="A"
+                        android:textColor="@color/black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:orientation="vertical">
+
+
+                        <katex.hourglass.in.mathlib.MathView
+                            android:id="@+id/option_a_math_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:setClickable="true"
+                            app:setText="Loading option"
+                            app:setTextColor="@color/black"
+                            app:setTextSize="@dimen/_7ssp" />
+
+                        <ImageView
+                            android:id="@+id/option_a_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:visibility="gone"
+                            tools:src="@drawable/ic_marks_logo" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/option_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:checkable="true"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:checkedIcon="@null"
+                app:checkedIconSize="0dp"
+                app:strokeColor="@color/dark_grey"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_12sdp">
+
+                    <TextView
+                        android:id="@+id/b_text"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/unselected_option_round_bg"
+                        android:gravity="center"
+                        android:text="B"
+                        android:textColor="@color/black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:orientation="vertical">
+
+
+                        <katex.hourglass.in.mathlib.MathView
+                            android:id="@+id/option_b_math_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:setClickable="true"
+                            app:setText="Loading option"
+                            app:setTextColor="@color/black"
+                            app:setTextSize="@dimen/_7ssp" />
+
+                        <ImageView
+                            android:id="@+id/option_b_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:visibility="gone"
+                            tools:src="@drawable/ic_marks_logo" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/option_c"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:checkable="true"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:checkedIcon="@null"
+                app:checkedIconSize="0dp"
+                app:strokeColor="@color/dark_grey"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_12sdp">
+
+                    <TextView
+                        android:id="@+id/c_text"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/unselected_option_round_bg"
+                        android:gravity="center"
+                        android:text="C"
+                        android:textColor="@color/black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:orientation="vertical">
+
+
+                        <katex.hourglass.in.mathlib.MathView
+                            android:id="@+id/option_c_math_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:setClickable="true"
+                            app:setText="Loading option"
+                            app:setTextColor="@color/black"
+                            app:setTextSize="@dimen/_7ssp" />
+
+                        <ImageView
+                            android:id="@+id/option_c_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:visibility="gone"
+                            tools:src="@drawable/ic_marks_logo" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/option_d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:checkable="true"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:checkedIcon="@null"
+                app:checkedIconSize="0dp"
+                app:strokeColor="@color/dark_grey"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_12sdp">
+
+                    <TextView
+                        android:id="@+id/d_text"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/unselected_option_round_bg"
+                        android:gravity="center"
+                        android:text="D"
+                        android:textColor="@color/black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:orientation="vertical">
+
+
+                        <katex.hourglass.in.mathlib.MathView
+                            android:id="@+id/option_d_math_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:setClickable="true"
+                            app:setText="Loading option"
+                            app:setTextColor="@color/black"
+                            app:setTextSize="@dimen/_7ssp" />
+
+                        <ImageView
+                            android:id="@+id/option_d_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:visibility="gone"
+                            tools:src="@drawable/ic_marks_logo" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <LinearLayout
+                android:id="@+id/solution_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Solution:"
+                    android:textColor="@color/dark_grey" />
+
+                <katex.hourglass.in.mathlib.MathView
+                    android:id="@+id/solution_math_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    app:setText="The kinetic energy needed … us $R$ ) to infinity is"
+                    app:setTextColor="@color/black"
+                    app:setTextSize="@dimen/_8ssp" />
+
+                <ImageView
+                    android:id="@+id/solution_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:visibility="gone"
+                    tools:src="@drawable/ic_marks_logo" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/bottom_rl"
+        android:background="@color/light_grey" />
+
+    <RelativeLayout
+        android:id="@+id/bottom_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_16sdp"
+        android:paddingVertical="@dimen/_6sdp">
+
+        <ImageView
+            android:id="@+id/previous_question_btn"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_alignParentStart="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/check_ans_btn"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:enabled="false"
+            android:text="Check Answer"
+            android:textAllCaps="false" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mid_next_btn"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:text="Next Answer"
+            android:textAllCaps="false" />
+
+        <ImageView
+            android:id="@+id/next_question_btn"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_next" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

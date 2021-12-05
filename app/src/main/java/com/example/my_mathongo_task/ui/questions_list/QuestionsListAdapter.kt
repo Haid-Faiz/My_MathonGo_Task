@@ -9,7 +9,7 @@ import com.example.datasource.remote.models.QuestionItem
 import com.example.my_mathongo_task.databinding.ItemQuestionBinding
 
 class QuestionsListAdapter(
-    private var onItemClicked: ((questionItem: QuestionItem) -> Unit)
+    private var onItemClicked: ((currentQuestPosition: Int) -> Unit)
 ) : ListAdapter<QuestionItem, QuestionsListAdapter.ViewHolder>(DiffUtilCallback()) {
 
 
@@ -29,8 +29,12 @@ class QuestionsListAdapter(
 
         fun bind(questionItem: QuestionItem, position: Int) = binding.apply {
             examName.text = questionItem.exams[0]
-            questionNo.text = position.plus(1).toString()
+            questionNo.text = "0${adapterPosition.plus(1)}"
             questionView.setDisplayText(questionItem.question.text)
+            // Setting up click listener on every item
+            root.setOnClickListener {
+                onItemClicked(position)
+            }
         }
     }
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ui.questions_list.QuestionListFragment">
 
@@ -50,30 +51,25 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Showing:"
+            android:text="Showing"
             android:textColor="@color/dark_grey" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/filter_btn"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_36sdp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_4sdp"
+            android:text="@string/filter_not_attempted"
             android:textAllCaps="false"
-            android:textColor="@color/black_dark">
-
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:layout_width="match_parent"
-                android:text="Not attempted"
-                android:textSize="@dimen/_10ssp"
-                android:layout_height="match_parent" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_10ssp" />
 
     </LinearLayout>
 
@@ -148,7 +144,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingHorizontal="@dimen/_6sdp"
-        android:paddingTop="@dimen/_4sdp"
+        android:paddingTop="@dimen/_2sdp"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_question"
@@ -158,17 +154,24 @@
         android:id="@+id/empty_attempted_question_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_56sdp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         android:visibility="gone">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="@dimen/_136sdp"
+            android:layout_height="@dimen/_136sdp"
+            android:src="@drawable/ic_empty_result" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Oh! you haven't attempted any question yet" />
+            android:layout_marginHorizontal="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="Oh! you haven't attempted any question yet"
+            android:textColor="@color/dark_grey"
+            android:textSize="@dimen/_14ssp" />
 
     </LinearLayout>
 

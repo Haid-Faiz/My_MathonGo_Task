@@ -1,15 +1,18 @@
 package com.example.my_mathongo_task.ui.questions_list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.datasource.remote.models.QuestionItem
 import com.example.my_mathongo_task.R
 import com.example.my_mathongo_task.databinding.FragmentQuestionsListBinding
+import com.example.my_mathongo_task.ui.QuestionsViewModel
 import com.example.my_mathongo_task.utils.Resource
 import com.example.my_mathongo_task.utils.showSnackBar
 
@@ -17,8 +20,9 @@ class QuestionListFragment : Fragment() {
 
     private var _binding: FragmentQuestionsListBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: QuestionsViewModel by viewModels()
+    private val viewModel: QuestionsViewModel by activityViewModels()
     private lateinit var adapter: QuestionsListAdapter
+    private var currentUnAttemptedList: ArrayList<QuestionItem>? = null
 
 
     override fun onCreateView(
@@ -55,6 +59,7 @@ class QuestionListFragment : Fragment() {
                     rvQuestionsList.isGone = false
                     // Update the UI
                     adapter.submitList(it.data)
+                    currentUnAttemptedList = it.data as ArrayList
                 }
             }
         }
@@ -68,8 +73,13 @@ class QuestionListFragment : Fragment() {
 
     private fun setUpRecyclerView() = binding.apply {
         // Setting up All Questions Results RecyclerView
-        adapter = QuestionsListAdapter {
-            findNavController().navigate(R.id.action_questionListFragment_to_quizFragment)
+        adapter = QuestionsListAdapter { currentPosition ->
+            currentUnAttemptedList?.let { currentList ->
+                Log.d("CurrentPosition_Quest", "$currentPosition")
+                viewModel.setQuestionList(currentList)
+                viewModel.setCurrentQuestionNum(currentPosition)
+                findNavController().navigate(R.id.action_questionListFragment_to_quizFragment)
+            }
         }
         rvQuestionsList.setHasFixedSize(true)
         rvQuestionsList.adapter = adapter

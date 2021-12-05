@@ -10,18 +10,15 @@
         android:label="QuestionListFragment" >
         <action
             android:id="@+id/action_questionListFragment_to_quizFragment"
-            app:destination="@id/quizFragment" />
+            app:destination="@id/quizFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/quizFragment"
         android:name="com.example.my_mathongo_task.ui.quiz.QuizFragment"
         android:label="QuizFragment" >
-        <action
-            android:id="@+id/action_quizFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/resultFragment"
-        android:name="com.example.my_mathongo_task.ui.result.ResultFragment"
-        android:label="ResultFragment" />
 </navigation>
