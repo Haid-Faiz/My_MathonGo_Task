@@ -23,8 +23,8 @@
         android:layout_marginTop="@dimen/_16sdp"
         android:text="You're on a streak !"
         android:textColor="@color/white"
-        android:textSize="@dimen/_20ssp"
-        android:textStyle="bold" />
+        android:fontFamily="@font/montserrat_bold"
+        android:textSize="@dimen/_20ssp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,6 +32,7 @@
         android:layout_marginHorizontal="@dimen/_24sdp"
         android:layout_marginTop="@dimen/_6sdp"
         android:text="3 correct answers in a row"
+        android:fontFamily="@font/montserrat"
         android:textColor="@color/white"
         android:textSize="@dimen/_14ssp" />
 
@@ -49,6 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_12sdp"
             android:backgroundTint="@color/white"
+            android:fontFamily="@font/open_sans"
             android:text="View Solution"
             android:textAllCaps="false"
             android:textColor="@color/black_dark" />
@@ -57,6 +59,7 @@
             android:id="@+id/next_quest_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans"
             android:layout_marginStart="@dimen/_12sdp"
             android:text="Next Question"
             android:textAllCaps="false"

@@ -71,6 +71,18 @@ class QuestionListFragment : Fragment() {
             }
         }
 
+        viewModel.getAttemptedQuestions().observe(viewLifecycleOwner) { attemptedList ->
+            this.attemptedQuestionList = attemptedList as ArrayList
+            if (attemptedList.isEmpty()) {
+                binding.attemptedView.rvAttemptedList.isGone = true
+                binding.attemptedView.emptyLayout.root.isGone = false
+            } else {
+                attemptedAdapter.submitList(attemptedList)
+                binding.attemptedView.rvAttemptedList.isGone = false
+                binding.attemptedView.emptyLayout.root.isGone = true
+            }
+        }
+
         viewModel.allQuestions.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Error -> binding.apply {
@@ -92,21 +104,12 @@ class QuestionListFragment : Fragment() {
                     unattemptedView.shimmerProgress.stopShimmer()
                     unattemptedView.rvUnAttemptedList.isGone = false
                     // Update the UI
-                    unAttemptedAdapter.submitList(it.data)
                     currentUnAttemptedList = it.data as ArrayList
+                    attemptedQuestionList?.let { attemptedList ->
+                        currentUnAttemptedList?.removeAll(attemptedList)
+                    }
+                    unAttemptedAdapter.submitList(currentUnAttemptedList!!)
                 }
-            }
-        }
-
-        viewModel.getAttemptedQuestions().observe(viewLifecycleOwner) { attemptedList ->
-            this.attemptedQuestionList = attemptedList as ArrayList
-            if (attemptedList.isEmpty()) {
-                binding.attemptedView.rvAttemptedList.isGone = true
-                binding.attemptedView.emptyLayout.root.isGone = false
-            } else {
-                attemptedAdapter.submitList(attemptedList)
-                binding.attemptedView.rvAttemptedList.isGone = false
-                binding.attemptedView.emptyLayout.root.isGone = true
             }
         }
 

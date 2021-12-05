@@ -11,7 +11,8 @@
         android:id="@+id/streak_view"
         layout="@layout/streak_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/correct_poster_text"
@@ -20,8 +21,9 @@
         android:layout_above="@id/question_num"
         android:layout_alignParentTop="true"
         android:background="@color/green_transparent"
+        android:fontFamily="@font/montserrat_bold"
         android:gravity="center"
-        android:text="You got it right !"
+        android:text="Yay! you got it right."
         android:textColor="@color/white"
         android:textSize="@dimen/_18ssp"
         android:translationZ="@dimen/_100sdp"
@@ -34,8 +36,9 @@
         android:layout_above="@id/question_num"
         android:layout_alignParentTop="true"
         android:background="@color/red_transparent"
+        android:fontFamily="@font/montserrat_bold"
         android:gravity="center"
-        android:text="You got it right !"
+        android:text="Oh! wrong answer."
         android:textColor="@color/white"
         android:textSize="@dimen/_18ssp"
         android:translationZ="@dimen/_100sdp"
@@ -49,6 +52,7 @@
         android:layout_marginStart="@dimen/_16sdp"
         android:layout_marginTop="@dimen/_24sdp"
         android:layout_marginBottom="@dimen/_16sdp"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/ic_back" />
 
     <TextView
@@ -58,6 +62,7 @@
         android:layout_alignBottom="@id/back_btn"
         android:layout_marginStart="@dimen/_12sdp"
         android:layout_toEndOf="@+id/back_btn"
+        android:fontFamily="@font/montserrat"
         android:gravity="center_vertical"
         android:text="Gravitation"
         android:textColor="@color/black_dark"
@@ -69,6 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/back_btn"
         android:layout_marginStart="@dimen/_16sdp"
+        android:fontFamily="@font/open_sans"
         android:textColor="@color/dark_grey"
         tools:text="Q4 (Single Correct)" />
 
@@ -95,7 +101,7 @@
                 android:layout_gravity="center"
                 app:setText="Loading question..."
                 app:setTextColor="@color/black"
-                app:setTextSize="@dimen/_8ssp" />
+                app:setTextSize="@dimen/_7ssp" />
 
             <ImageView
                 android:id="@+id/question_image"
@@ -112,6 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:background="@drawable/exam_name_bg"
+                android:fontFamily="@font/open_sans"
                 android:paddingHorizontal="@dimen/_8sdp"
                 android:paddingVertical="@dimen/_2sdp"
                 android:textAlignment="center"
@@ -142,6 +149,7 @@
                         android:layout_height="@dimen/_20sdp"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/unselected_option_round_bg"
+                        android:fontFamily="@font/open_sans"
                         android:gravity="center"
                         android:text="A"
                         android:textColor="@color/black" />
@@ -203,6 +211,7 @@
                         android:layout_height="@dimen/_20sdp"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/unselected_option_round_bg"
+                        android:fontFamily="@font/open_sans"
                         android:gravity="center"
                         android:text="B"
                         android:textColor="@color/black" />
@@ -263,6 +272,7 @@
                         android:layout_height="@dimen/_20sdp"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/unselected_option_round_bg"
+                        android:fontFamily="@font/open_sans"
                         android:gravity="center"
                         android:text="C"
                         android:textColor="@color/black" />
@@ -323,6 +333,7 @@
                         android:layout_height="@dimen/_20sdp"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/unselected_option_round_bg"
+                        android:fontFamily="@font/open_sans"
                         android:gravity="center"
                         android:text="D"
                         android:textColor="@color/black" />
@@ -372,6 +383,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans"
                     android:text="Solution:"
                     android:textColor="@color/dark_grey" />
 
@@ -431,6 +443,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:enabled="false"
+            android:fontFamily="@font/open_sans"
             android:text="Check Answer"
             android:textAllCaps="false" />
 
@@ -439,10 +452,11 @@
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_centerInParent="true"
+            android:fontFamily="@font/open_sans"
             android:text="Next Answer"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/next_question_btn"

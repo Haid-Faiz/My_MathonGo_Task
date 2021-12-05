@@ -23,7 +23,13 @@ class QuestionsListAdapter(
         holder.bind(getItem(position), position)
     }
 
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
 
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
 
     inner class ViewHolder(
         private val binding: ItemQuestionBinding
@@ -31,7 +37,7 @@ class QuestionsListAdapter(
 
         fun bind(questionItem: QuestionItem, position: Int) = binding.apply {
             examName.text = questionItem.exams[0]
-            questionNo.text = "0${adapterPosition.plus(1)}"
+            questionNo.text = "0${position.plus(1)}"
             questionView.setDisplayText(questionItem.question.text)
             // Setting up click listener on every item
             root.setOnClickListener {

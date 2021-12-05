@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:visibility="gone"
     android:background="@color/white"
+    android:gravity="center"
     android:orientation="vertical"
+    android:visibility="gone"
     android:weightSum="10">
 
     <ImageView
         android:id="@+id/status_image"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_96sdp"
+        android:layout_height="@dimen/_92sdp"
         android:src="@drawable/ic_antenna" />
 
     <TextView
         android:id="@+id/status_text_title"
         android:layout_width="match_parent"
-        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_28sdp"
+        android:fontFamily="@font/open_sans_semibold"
         android:gravity="center_horizontal"
         android:paddingHorizontal="@dimen/_16sdp"
         android:text="Connection Error"
@@ -31,7 +31,8 @@
         android:id="@+id/status_text_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:fontFamily="@font/open_sans"
         android:gravity="center_horizontal"
         android:paddingHorizontal="@dimen/_16sdp"
         android:text="Please check your internet/wifi connection"
@@ -40,12 +41,14 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/retry_button"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_36sdp"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:fontFamily="@font/open_sans"
         android:text="Retry"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@color/blue"
         android:textSize="@dimen/_14ssp"
         app:strokeColor="@color/blue" />
 </LinearLayout>

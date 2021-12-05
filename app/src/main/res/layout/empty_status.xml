@@ -3,15 +3,15 @@
     android:id="@+id/empty_attempted_question_status"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_56sdp"
+    android:layout_marginTop="@dimen/_46sdp"
     android:background="@color/white"
     android:gravity="center_horizontal"
     android:visibility="gone"
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="@dimen/_136sdp"
-        android:layout_height="@dimen/_136sdp"
+        android:layout_width="@dimen/_132sdp"
+        android:layout_height="@dimen/_132sdp"
         android:src="@drawable/ic_empty_result" />
 
     <TextView
@@ -19,18 +19,22 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_24sdp"
         android:layout_marginTop="@dimen/_16sdp"
-        android:text="Oh! you haven't attempted any question yet"
+        android:fontFamily="@font/open_sans_semibold"
+        android:gravity="center"
+        android:text="Oops! we couldn't find any questions with the selected filter. Please try clearing it."
         android:textColor="@color/dark_grey"
         android:textSize="@dimen/_14ssp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/clear_filter"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_32sdp"
+        android:layout_marginTop="@dimen/_24sdp"
         android:text="Clear filter"
+        android:fontFamily="@font/open_sans"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@color/blue"
         android:textSize="@dimen/_14ssp"
         app:strokeColor="@color/blue" />
 

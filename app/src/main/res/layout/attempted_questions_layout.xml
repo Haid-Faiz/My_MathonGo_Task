@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingHorizontal="@dimen/_6sdp"
-        android:paddingTop="@dimen/_2sdp"
+        android:paddingTop="@dimen/_4sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_question" />
 

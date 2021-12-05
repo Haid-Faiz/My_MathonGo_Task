@@ -19,16 +19,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_14sdp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
             android:text="Gravitation"
             android:textColor="@color/black_dark"
-            android:textSize="@dimen/_24sdp"
-            android:textStyle="bold" />
+            android:textSize="@dimen/_20ssp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -42,6 +42,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans"
         android:layout_marginStart="@dimen/_16sdp"
         android:text="Low input high output chapter"
         android:textColor="@color/dark_grey" />
@@ -50,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_8sdp"
         android:orientation="horizontal">
 
@@ -78,6 +79,7 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:inputType="none"
+                android:fontFamily="@font/open_sans"
                 android:paddingVertical="1dp"
                 android:text="Not Attempted"
                 android:textSize="@dimen/_9ssp">
@@ -96,9 +98,9 @@
 
     <include
         android:id="@+id/attempted_view"
-        android:visibility="gone"
         layout="@layout/attempted_questions_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 </LinearLayout>

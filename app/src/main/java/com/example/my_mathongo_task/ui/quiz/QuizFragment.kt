@@ -146,7 +146,7 @@ class QuizFragment : Fragment(), View.OnClickListener {
 
     private fun updateUI(questionItem: QuestionItem) = binding.apply {
 
-        questionNum.text = "Q${currentQuestPosition} (${questionItem.type})"
+        questionNum.text = "Q${currentQuestPosition.plus(1)} (${questionItem.type})"
         questionText.setDisplayText(questionItem.question.text)
         // If question also contains image then show it
         if (!questionItem.question.image.isNullOrEmpty()) {
@@ -413,6 +413,7 @@ class QuizFragment : Fragment(), View.OnClickListener {
                         // Show correct answer poster
                         correctPosterText.isGone = false
                         correctPosterText.startAnimation(popingAnim)
+                        correctPosterText.postDelayed({ correctPosterText.isGone = true }, 3000)
                     }
 
                 } else {
@@ -476,6 +477,7 @@ class QuizFragment : Fragment(), View.OnClickListener {
                     // Show the wrong ans poster
                     wrongPosterText.isGone = false
                     wrongPosterText.startAnimation(popingAnim)
+                    wrongPosterText.postDelayed({ wrongPosterText.isGone = true }, 3000)
                 }
 
                 // insert this question in database

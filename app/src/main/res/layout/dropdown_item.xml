@@ -3,5 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/_10sdp"
+    android:fontFamily="@font/open_sans"
     android:textColor="@color/black_dark"
     tools:text="Not Attempted" />
