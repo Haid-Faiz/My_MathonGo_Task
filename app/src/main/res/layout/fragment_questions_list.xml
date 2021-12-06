@@ -77,6 +77,7 @@
                 android:background="@color/white"
                 android:backgroundTint="@color/white"
                 android:focusable="false"
+                android:popupTheme="@color/white"
                 android:focusableInTouchMode="false"
                 android:inputType="none"
                 android:fontFamily="@font/open_sans"
